@@ -85,9 +85,12 @@ musicbar.addEventListener('change', () => {
 //taking the array as input for the songList
 
 Array.from(document.getElementsByClassName('songList')).forEach((element) => {
+
   element.addEventListener('click', (e) => {
-   songIndex = parseInt(e.target.id) - 1;
-    
+
+    localStorage.setItem("songIndex", e.currentTarget.id);
+
+   songIndex = parseInt(e.currentTarget.id) - 1;
     audio.src = songsArray[songIndex].songpath;
     audio.play();
     playit.classList.remove('fa-circle-play');
